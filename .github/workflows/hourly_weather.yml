@@ -1,0 +1,33 @@
+name: Hourly Weather Pipeline
+
+# 1. THE TRIGGER (The Alarm Clock)
+on:
+  schedule:
+    - cron: '0 * * * *'  # This code means "At minute 0 of every hour"
+  workflow_dispatch:      # This lets you click a "Run Now" button manually to test it
+
+jobs:
+  run_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # A. Download your code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # B. Install Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      # C. Install the library menu (requirements.txt)
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      # D. Run the Simulator Script
+      - name: Run Feature Pipeline
+        env: 
+          # We pass the API Key secretly here
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+        run: python feature_pipeline.py
