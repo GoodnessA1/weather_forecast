@@ -30,8 +30,8 @@ def get_random_weather_data():
     # Ensure numeric columns are floats
     random_row['Temperature'] = random_row['Temperature'].astype(float)
     random_row['Humidity'] = random_row['Humidity'].astype(float)
-    random_row['Wind_speed'] = random_row['Wind_speed'].astype(float)
-    random_row['Cloud_cover'] = random_row['Cloud_cover'].astype(float)
+    random_row['Wind_Speed'] = random_row['Wind_Speed'].astype(float)
+    random_row['Cloud_Cover'] = random_row['Cloud_Cover'].astype(float)
     random_row['Pressure'] = random_row['Pressure'].astype(float)
     return random_row
 
