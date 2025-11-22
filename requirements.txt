@@ -1,2 +1,3 @@
 pandas
-hopsworks
+hopsworks==4.2.*
+pyarrow
